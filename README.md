@@ -1,10 +1,10 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/3YQtLipU)
-# Projekt: Hotel Buchungsoberfläche
+# Projekt: Hotel Buchungsoberfläche Team F
 
 ---
 ## Kontext und Einordnung
 
-Unser Team wurde beauftragt eine Buchungsapp zu entwickeln, die Benutzer auf dem Smartphone und dem Desktop verwenden werden.
+Unser Team (Team F) wurde beauftragt eine Buchungsapp zu entwickeln, die Benutzer auf dem Smartphone und dem Desktop verwenden werden.
 Es werden bis zu 100 Besucher pro Tag erwartet, d.h. die bestehende Infrastruktur reicht für die Performance anforderungen aus.
 Besonders Augenmerk, soll auf die moderne und nachhaltige Umsetzung der App gelegt werden, da diese in den kommenden Jahren mit weiteren Features erweitert werden soll.
 Wesentlich ist dem Auftraggeber auch ein roter Faden in der Usability und im Stylingkonzept.
