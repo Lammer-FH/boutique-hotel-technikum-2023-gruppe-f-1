@@ -63,7 +63,7 @@ export default defineComponent({
 
   .Aboutheader {
     font-size: 60px;
-    color: #2aa1cd, #2a2820;
+    color: #2aa1cd;
     font-family:'Dancing Script';
     text-decoration: underline;
     text-decoration-color: #2aa1cd;
