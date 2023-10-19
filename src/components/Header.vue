@@ -14,9 +14,9 @@ export default defineComponent({
           <router-link to="/" class="navbar-brand">
             <img
                 alt="Logo"
-                src="@/assets/logo.svg"
-                width="30"
-                height="30"
+                src="@/assets/FH_Technikum_Wien_logo.svg.png"
+                width="50"
+                height= "30"
                 class="d-inline-block align-top"
             />
             Technikum Wien
