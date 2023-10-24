@@ -15,7 +15,7 @@ export default defineComponent({
             <img
                 alt="Logo"
                 src="@/assets/FH_Technikum_Wien_logo.svg.png"
-                width="50"
+                width="40"
                 height= "30"
                 class="d-inline-block align-top"
             />

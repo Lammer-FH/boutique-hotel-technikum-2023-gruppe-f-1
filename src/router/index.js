@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Landing from "@/components/Landing.vue";
-import About from "@/components/About.vue";
-import Impressum from "@/components/Impressum.vue";
+import Landing from "@/views/Landing.vue";
+import About from "@/views/About.vue";
+import Impressum from "@/views/Impressum.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

@@ -11,7 +11,7 @@ export default defineComponent({
     <h1 class="text-center mb-4 Aboutheader" >About Us</h1>
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <img src="@/assets/Aboutpic.jpg" class="img-fluid mb-4" alt="About Us Image">
+        <img src="../assets/Aboutpic.jpg" class="img-fluid mb-4" alt="About Us Image">
         <p>
           Herzlich willkommen bei Boutique-Hotel Technikum Wien!
           Lassen Sie uns Ihnen mehr über unsere Leidenschaft für Gastfreundschaft, Technologie und Wiener Kultur erzählen.

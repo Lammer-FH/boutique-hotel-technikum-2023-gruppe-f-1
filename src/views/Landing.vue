@@ -16,7 +16,7 @@ export default defineComponent({
       <div class="col">
         <img
             alt="Hotel Image"
-            src="@/assets/Hotel-Wien.webp"
+            src="../assets/Hotel-Wien.webp"
             class="img-fluid w-100"
         />
       </div>
