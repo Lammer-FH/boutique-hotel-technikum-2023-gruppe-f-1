@@ -51,7 +51,4 @@ export default defineComponent({
   margin-top: 20px;
 }
 
-.b-button {
-  margin: 0 10px;
-}
 </style>
