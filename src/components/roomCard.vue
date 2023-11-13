@@ -14,7 +14,7 @@ export default defineComponent({
 
 <template>
   <b-card class="mb-3">
-    <b-card-img :src="`../assets/rooms/${room.id}.jpeg`" alt="Room Image" top></b-card-img>
+    <b-card-img :src="`../src/assets/rooms/${room.id}.jpeg`" alt="Room Image" top></b-card-img>
     <b-card-body>
       <b-card-title>{{ room.roomsName }}</b-card-title>
       <b-card-text>{{ room.pricePerNight }} €</b-card-text>
