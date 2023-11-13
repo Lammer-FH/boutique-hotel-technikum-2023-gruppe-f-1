@@ -14,7 +14,12 @@ export default defineComponent({
 
 <template>
   <b-card class="mb-3">
-    <b-card-img :src="`../src/assets/rooms/${room.id}.jpeg`" alt="Room Image" top></b-card-img>
+    <b-card-img
+        :src="`../src/assets/rooms/${room.id}.jpeg`"
+        alt="Room Image"
+        top
+        class="room-image"
+    ></b-card-img>
     <b-card-body>
       <b-card-title>{{ room.roomsName }}</b-card-title>
       <b-card-text>{{ room.pricePerNight }} €</b-card-text>
@@ -25,3 +30,10 @@ export default defineComponent({
   </b-card>
 </template>
 
+<style scoped>
+.room-image {
+  height: 200px; /* Feste Höhe für das Bild */
+  object-fit: cover; /* Sorgt dafür, dass das Bild den Container füllt, ohne das Seitenverhältnis zu verzerren */
+  width: 100%; /* Breite des Bildcontainers */
+}
+</style>
