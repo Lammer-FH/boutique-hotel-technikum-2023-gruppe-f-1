@@ -2,14 +2,11 @@
 import { defineComponent } from 'vue';
 import RoomCard from './RoomCard.vue'; // Stelle sicher, dass dieser Pfad korrekt ist
 import { getAllRooms } from '@/api/roomService'; // Stelle sicher, dass dieser Pfad korrekt ist
-import { BButton, BCardGroup } from 'bootstrap-vue-3';
 
 export default defineComponent({
   name: "RoomList",
   components: {
-    RoomCard,
-    BButton,
-    BCardGroup,
+    RoomCard
   },
   data() {
     return {
