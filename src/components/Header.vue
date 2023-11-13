@@ -1,5 +1,5 @@
 <script>
-import {defineComponent} from 'vue'
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: "Header"
@@ -7,7 +7,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <header>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <div class="d-flex justify-content-between w-100">
@@ -15,18 +15,24 @@ export default defineComponent({
             <img
                 alt="Logo"
                 src="@/assets/FH_Technikum_Wien_logo.svg.png"
-                width="40"
-                height= "30"
-                class="d-inline-block align-top"
+                style="max-width: 40%; max-height: 30px; height: auto;"
             />
-            Technikum Wien
+            Technikum
           </router-link>
           <div class="d-flex">
-            <button class="btn btn-outline-primary me-1">Anmelden</button>
-            <button class="btn btn-outline-success">Profil</button>
+            <!-- Zimmer anzeigen Button -->
+            <router-link to="/rooms" class="btn btn-outline-primary btn-sm me-1">Zimmer <br/>anzeigen</router-link>
+
+            <!-- Anmelden Button -->
+            <button class="btn btn-outline-primary btn-sm me-1">Anmelden</button>
+            <!-- Profil Button -->
+            <button class="btn btn-outline-success btn-sm">Profil</button>
           </div>
         </div>
       </div>
     </nav>
-  </header>
+
 </template>
+
+
+
