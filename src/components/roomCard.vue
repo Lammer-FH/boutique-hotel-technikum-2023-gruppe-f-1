@@ -25,13 +25,3 @@ export default defineComponent({
   </b-card>
 </template>
 
-<style scoped>
-.b-card-img {
-  height: 200px;
-  object-fit: cover;
-}
-
-.b-card {
-  max-width: 300px;
-}
-</style>
