@@ -9,6 +9,17 @@ export default defineComponent({
       required: true,
     },
   },
+  computed: {
+    transformedExtras() {
+      const extrasObj = {};
+      this.room.extras.forEach(extra => {
+        for (const key in extra) {
+          extrasObj[key] = extra[key] === 1;
+        }
+      });
+      return extrasObj;
+    },
+  },
 })
 </script>
 
@@ -25,7 +36,14 @@ export default defineComponent({
       <b-card-text>{{ room.pricePerNight }} €</b-card-text>
     </b-card-body>
     <b-card-footer>
-      <!-- Hier können weitere Informationen oder Aktionen eingefügt werden -->
+      <font-awesome-icon v-if="transformedExtras.bathroom" icon="fa-solid fa-bath" class="mx-1"/>
+      <font-awesome-icon v-if="transformedExtras.minibar" icon="fa-solid fa-cookie-bite" class="mx-1"/>
+      <font-awesome-icon v-if="transformedExtras.television" icon="fa-solid fa-tv" class="mx-1"/>
+      <font-awesome-icon v-if="transformedExtras.livingroom" icon="fa-solid fa-expand" class="mx-1"/>
+      <font-awesome-icon v-if="transformedExtras.aircondition" icon="fa-solid fa-snowflake" class="mx-1"/>
+      <font-awesome-icon v-if="transformedExtras.wifi" icon="fa-solid fa-wifi" class="mx-1"/>
+      <font-awesome-icon v-if="transformedExtras.breakfast" icon="fa-solid fa-egg" class="mx-1"/>
+      <font-awesome-icon v-if="transformedExtras['handicapped accessible']" icon="fa-solid fa-wheelchair" class="mx-1"/>
     </b-card-footer>
   </b-card>
 </template>
