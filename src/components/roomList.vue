@@ -1,23 +1,25 @@
 <script>
 import { defineComponent } from 'vue';
 import RoomCard from './RoomCard.vue'; // Stelle sicher, dass dieser Pfad korrekt ist
-import { getAllRooms } from '@/api/roomService'; // Stelle sicher, dass dieser Pfad korrekt ist
+import {useRoomStore} from "@/stores/roomsStore"; // Stelle sicher, dass dieser Pfad korrekt ist
+
 
 export default defineComponent({
   name: "RoomList",
   components: {
     RoomCard
   },
-  data() {
-    return {
-      rooms: [],
+    data: () => {
+    return{
+      roomsStore: useRoomStore(),
       currentPage: 1,
-      limit: 5,
-    };
-  },
+      limit: 5
+    }
+    },
+
   computed: {
     totalPages() {
-      return Math.ceil(this.rooms.length / this.limit);
+      return Math.ceil(this.roomsStore.rooms.length / this.limit);
     },
     startIndex() {
       return (this.currentPage - 1) * this.limit;
@@ -26,7 +28,7 @@ export default defineComponent({
       return this.currentPage * this.limit;
     },
     paginatedRooms() {
-      return this.rooms.slice(this.startIndex, this.endIndex);
+      return this.roomsStore.rooms.slice(this.startIndex, this.endIndex);
     },
   },
   methods: {
@@ -38,13 +40,11 @@ export default defineComponent({
     },
   },
   mounted() {
-    getAllRooms().then(data => {
-      this.rooms = data;
-    }).catch(error => {
-      console.error('Failed to fetch rooms:', error);
-    });
+    if (this.roomsStore.rooms.length === 0) {
+      this.roomsStore.fetchRooms();
+    }
   },
-})
+});
 </script>
 
 <template>
