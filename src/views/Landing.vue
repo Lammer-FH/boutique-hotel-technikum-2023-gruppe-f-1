@@ -1,12 +1,35 @@
 <script>
-import {defineComponent} from "vue";
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
+import { defineComponent } from 'vue';
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+import RoomCard from '@/components/RoomCard.vue';
+import { useAvailabilityStore } from '@/stores/availStore';
 
 export default defineComponent({
-  components: {Footer, Header}
-})
+  components: { Footer, Header, RoomCard },
+  data() {
+    return {
+      startDate: null,
+      endDate: null,
+      availabilityData: null,
+    };
+  },
+  methods: {
+    async searchRooms() {
+      try {
+        const response = await this.$store.dispatch('checkAvailability', {
+          checkInDate: this.startDate,
+          checkOutDate: this.endDate,
+          roomCategory: 'all', 
+        });
 
+        this.availabilityData = response;
+      } catch (error) {
+        console.error('Fehler bei der Zimmer-Suche:', error);
+      }
+    },
+  },
+});
 </script>
 
 <template>
@@ -64,7 +87,17 @@ export default defineComponent({
           <span class="mx-2">bis</span>
           <b-form-input type="date" v-model="endDate"></b-form-input>
         </div>
-        <b-button class="mt-2">Suche</b-button>
+        <b-button class="mt-2" @click="searchRooms">Suche</b-button>
+      </b-col>
+    </b-row>
+    <b-row v-if="availabilityData" class="mt-3">
+      <b-col>
+        <h4>Verfügbare Zimmer:</h4>
+        <b-row>
+          <b-col md="4" v-for="room in availabilityData" :key="room.id">
+            <RoomCard :room="room" />
+          </b-col>
+        </b-row>
       </b-col>
     </b-row>
   </b-container>

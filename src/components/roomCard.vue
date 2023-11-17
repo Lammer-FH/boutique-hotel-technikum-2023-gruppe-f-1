@@ -1,25 +1,27 @@
 <script>
 import { defineComponent } from 'vue';
 
+
 export default defineComponent({
-  name: "RoomCard",
-  props: {
-    room: {
-      type: Object,
-      required: true,
+    name: "RoomCard",
+    props: {
+        room: {
+            type: Object,
+            required: true,
+        },
     },
-  },
-  computed: {
-    transformedExtras() {
-      const extrasObj = {};
-      this.room.extras.forEach(extra => {
-        for (const key in extra) {
-          extrasObj[key] = extra[key] === 1;
-        }
-      });
-      return extrasObj;
+    computed: {
+        transformedExtras() {
+            const extrasObj = {};
+            this.room.extras.forEach(extra => {
+                for (const key in extra) {
+                    extrasObj[key] = extra[key] === 1;
+                }
+            });
+            return extrasObj;
+        },
     },
-  },
+    
 })
 </script>
 
@@ -46,6 +48,7 @@ export default defineComponent({
       <font-awesome-icon v-if="transformedExtras['handicapped accessible']" icon="fa-solid fa-wheelchair" class="mx-1"/>
     </b-card-footer>
   </b-card>
+  
 </template>
 
 <style scoped>

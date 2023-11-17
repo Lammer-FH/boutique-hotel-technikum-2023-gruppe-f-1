@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
-import RoomCard from './RoomCard.vue'; // Stelle sicher, dass dieser Pfad korrekt ist
-import {useRoomStore} from "@/stores/roomsStore"; // Stelle sicher, dass dieser Pfad korrekt ist
+import RoomCard from '../components/roomCard.vue'; 
+import {useRoomStore} from "@/stores/roomsStore"; 
 
 
 export default defineComponent({
