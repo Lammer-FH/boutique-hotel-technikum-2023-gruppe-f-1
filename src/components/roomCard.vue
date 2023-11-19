@@ -50,6 +50,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
+
 .room-image {
   height: 200px; /* Feste Höhe für das Bild */
   object-fit: cover; /* Sorgt dafür, dass das Bild den Container füllt, ohne das Seitenverhältnis zu verzerren */

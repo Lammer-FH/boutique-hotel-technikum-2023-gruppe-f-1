@@ -55,6 +55,8 @@ export default defineComponent({
           }
         }
         this.showFilteredRooms = true;
+        const roomStore = useRoomStore();
+        roomStore.setSelectedDates(this.startDate, this.endDate);
       } catch (error) {
         console.error('Fehler beim Laden der verfügbaren Zimmer:', error);
       }
@@ -76,22 +78,21 @@ export default defineComponent({
     <b-form-input type="date" v-model="startDate" class="mr-2"></b-form-input>
     <span class="mx-2">bis</span>
     <b-form-input type="date" v-model="endDate" class="mr-2"></b-form-input>
-    <!-- Abstand links für den Button -->
     <b-button variant="primary" class="ml-2" @click="loadAvailableRooms">Verfügbare Zimmer anzeigen</b-button>
   </div>
 
-  <b-card-group deck>
+  <div class="room-list-container">
     <room-card v-for="room in paginatedRooms"
                :key="room.id"
                :room="room"
+               class="room-card-item"
     />
-  </b-card-group>
+  </div>
 
   <div class="pagination-buttons">
     <b-button @click="prevPage" :disabled="currentPage <= 1">Previous</b-button>
     <b-button @click="nextPage" :disabled="currentPage >= totalPages">Next</b-button>
   </div>
-
 </template>
 
 <style scoped>
@@ -101,6 +102,19 @@ export default defineComponent({
   justify-content: center;
   margin-bottom: 20px;
 }
+
+.room-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.room-card-item {
+  flex: 0 0 20%; /* Jede Karte nimmt 20% der Containerbreite ein */
+  max-width: 20%; /* Maximale Breite der Karte */
+  margin-bottom: 20px; /* Abstand nach unten */
+}
+
 .pagination-buttons {
   display: flex;
   justify-content: center;

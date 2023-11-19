@@ -1,6 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
 import { useBookingStore } from '@/stores/bookingStore';
+import { useRoomStore } from "@/stores/roomsStore";
 
 export default defineComponent({
   name: "BookingForm",
@@ -10,6 +11,7 @@ export default defineComponent({
       required: true
     },
   },
+
   data() {
     return {
       bookingData: {
@@ -23,6 +25,12 @@ export default defineComponent({
       },
       showConfirmModal: false
     };
+  },
+  mounted() {
+    const roomStore = useRoomStore();
+    this.bookingData.fromDate = roomStore.selectedStartDate;
+    this.bookingData.toDate = roomStore.selectedEndDate;
+    console.log(roomStore.selectedStartDate);
   },
   methods: {
     openConfirmModal() {
@@ -40,6 +48,7 @@ export default defineComponent({
       };
       this.showConfirmModal = false;
     },
+
     async submitBooking() {
       try {
         const { firstname, lastname, email, birthdate } = this.bookingData;
