@@ -3,6 +3,7 @@ import Landing from "@/views/Landing.vue";
 import About from "@/views/About.vue";
 import Impressum from "@/views/Impressum.vue";
 import RoomsPage from '@/views/RoomsPage.vue';
+import BookingForm from "@/views/BookingForm.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,6 +12,12 @@ const router = createRouter({
       path: '/',
       name: 'landing',
       component: Landing
+    },
+    {
+      path: '/booking/:roomId',
+      name: 'Booking',
+      component: BookingForm,
+      props: true
     },
     {
       path: '/about',
