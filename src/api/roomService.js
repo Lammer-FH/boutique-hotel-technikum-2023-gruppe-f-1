@@ -17,3 +17,14 @@ export const getAllRooms = async () => {
         throw error;
     }
 };
+
+export const bookRoom = async (roomId, fromDate, toDate, bookingData) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/room/${roomId}/from/${fromDate}/to/${toDate}`, bookingData);
+        console.log(response)
+        return response.data;
+    } catch (error) {
+        console.error('Error booking room:', error);
+        throw error;
+    }
+};

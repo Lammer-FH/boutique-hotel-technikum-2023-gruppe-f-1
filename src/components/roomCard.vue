@@ -45,6 +45,7 @@ export default defineComponent({
       <font-awesome-icon v-if="transformedExtras.breakfast" icon="fa-solid fa-egg" class="mx-1"/>
       <font-awesome-icon v-if="transformedExtras['handicapped accessible']" icon="fa-solid fa-wheelchair" class="mx-1"/>
     </b-card-footer>
+    <router-link :to="`/booking/${room.id}`" class="btn btn-primary">Buchen</router-link>
   </b-card>
 </template>
 

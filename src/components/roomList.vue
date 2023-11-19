@@ -7,7 +7,7 @@ import { useAvailableRoomStore } from "@/stores/availableRoomsStore";
 export default defineComponent({
   name: "RoomList",
   components: {
-    RoomCard
+    RoomCard,
   },
   data: () => {
     return {
@@ -81,13 +81,17 @@ export default defineComponent({
   </div>
 
   <b-card-group deck>
-    <room-card v-for="room in paginatedRooms" :key="room.id" :room="room" />
+    <room-card v-for="room in paginatedRooms"
+               :key="room.id"
+               :room="room"
+    />
   </b-card-group>
 
   <div class="pagination-buttons">
     <b-button @click="prevPage" :disabled="currentPage <= 1">Previous</b-button>
     <b-button @click="nextPage" :disabled="currentPage >= totalPages">Next</b-button>
   </div>
+
 </template>
 
 <style scoped>
