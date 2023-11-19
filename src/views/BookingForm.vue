@@ -65,6 +65,7 @@ export default defineComponent({
 </script>
 
 <template>
+  <b-container>
   <div class="booking-form">
     <h1>Zimmer buchen</h1>
     <form @submit.prevent="openConfirmModal">
@@ -126,6 +127,7 @@ export default defineComponent({
     </b-modal>
 
   </div>
+  </b-container>
 </template>
 
 
