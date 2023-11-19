@@ -12,7 +12,7 @@ export const getAllRooms = async () => {
         // Gib die Daten zurück
         return response.data;
     } catch (error) {
-        // Logge und werfe einen Fehler im Falle eines Fehlerschlags
+        // Logge und werfe einen Fehler im Falle eines Fehlschlags
         console.error('Error fetching rooms:', error);
         throw error;
     }
