@@ -9,6 +9,7 @@ export const useRoomStore = defineStore('roomStore', {
         async fetchRooms() {
             try {
                 this.rooms = await getAllRooms();
+                console.log(this.rooms);
             } catch (error) {
                 console.error('Error fetching rooms:', error);
             }
