@@ -2,56 +2,10 @@
 import {defineComponent} from "vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import {useRoomStore} from "@/stores/roomsStore";
-import {useAvailableRoomStore} from "@/stores/availableRoomsStore";
 
 export default defineComponent({
   components: {Footer, Header},
 
-  data: () => {
-    return {
-      startDate: undefined,
-      endDate: undefined,
-      roomIds: [],
-      rooms: [],
-      availableRooms: []
-    }
-  }, methods: {
-    async loadRoomsFromStore() {
-      try {
-        const roomStore = useRoomStore();
-        await roomStore.fetchRooms(); // Warte darauf, dass das Promise aufgelöst wird
-        this.rooms = roomStore.rooms; // Setze die Zimmerdaten in das rooms-Array der Komponente
-
-        this.getRoomIds();
-      } catch (error) {
-        console.error('Fehler beim Laden der Zimmerdaten:', error);
-      }
-    },
-    async loadAvailableRoomsFromStore() {
-      try {
-        const availableRoomStore = useAvailableRoomStore();
-        for (let x = 0; x < this.roomIds.length; x++) {
-          await availableRoomStore.fetchAvailableRoom(this.roomIds[x], this.startDate, this.endDate);
-          if (availableRoomStore.availableRoom.available === true) {
-            this.availableRooms.push(this.rooms[x]);
-          }
-        }
-
-        // this.getRoomIds();
-      } catch (error) {
-        console.error('Fehler beim Laden der Zimmerdaten:', error);
-      }
-    },
-    getRoomIds() {
-      for (let x = 0; x < this.rooms.length; x++) {
-        this.roomIds.push(this.rooms[x].id);
-      }
-    }
-  },
-  mounted() {
-    this.loadRoomsFromStore();
-  }
 });
 
 </script>
@@ -119,28 +73,6 @@ export default defineComponent({
         </p>
       </b-col>
     </b-row>
-
-    <b-row class="mt-3">
-      <b-col>
-        <h3>Bitte wählen Sie den gewünschten Zeitraum</h3>
-        <div class="d-flex align-items-center">
-          <b-form-input type="date" v-model="startDate"></b-form-input>
-          <span class="mx-2">bis</span>
-          <b-form-input type="date" v-model="endDate"></b-form-input>
-        </div>
-        <b-button class="mt-2" v-on:click="loadAvailableRoomsFromStore">Suche</b-button>
-      </b-col>
-    </b-row>
-
-
-    <b-row class="mt-3">
-      <p>{{ startDate }}</p>
-      <p>{{ endDate }}</p>
-      <p>{{ rooms }}</p>
-      <p>{{ roomIds }}</p>
-      <p>{{ availableRooms }}</p>
-    </b-row>
-
 
   </b-container>
 </template>
