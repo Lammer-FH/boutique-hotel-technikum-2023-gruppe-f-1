@@ -4,6 +4,7 @@ import About from "@/views/About.vue";
 import Impressum from "@/views/Impressum.vue";
 import RoomsPage from '@/views/RoomsPage.vue';
 import BookingForm from "@/views/BookingForm.vue";
+import RegistrationForm from "@/views/RegistrationForm.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/rooms',
       name: 'rooms',
       component: RoomsPage
+    },
+    {
+      path: '/register',
+      name: 'RegistrationForm',
+      component: RegistrationForm
     }
   ]
 })
