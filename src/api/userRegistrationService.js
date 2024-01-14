@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://boutique-hotel.helmuth-lammer.at/api/v1/';
+const API_BASE_URL = 'https://boutique-hotel.helmuth-lammer.at/api/v1';
 
 export const registerUser = async (userData) => {
   try {
