@@ -51,18 +51,16 @@ export default defineComponent({
 
     async submitBooking() {
       try {
-        const { firstname, lastname, email, birthdate } = this.bookingData;
 
-        // Erstellen Sie ein neues Objekt mit nur den benötigten Daten
-        const bookingInfo = {
-          firstname,
-          lastname,
-          email,
-          birthdate
-        };
-        //console.log(this.fromDate);
-        await useBookingStore().makeBooking(this.roomId, this.bookingData.fromDate, this.bookingData.toDate,bookingInfo);
-        alert('Buchung erfolgreich!');
+
+        const bookingStore = useBookingStore();
+        await bookingStore.makeBooking(this.roomId, this.bookingData.fromDate, this.bookingData.toDate, this.bookingData);
+
+
+        this.$router.push({
+          name: 'BookingConfirmation',
+        });
+
         this.resetBooking();
       } catch (error) {
         alert('Buchung fehlgeschlagen. Bitte versuchen Sie es später erneut.');
