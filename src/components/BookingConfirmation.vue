@@ -43,7 +43,13 @@ export default defineComponent({
     printPage() {
       window.print();
     }
-  }
+  },
+  computed: {
+    $googleMapsApiKey() {
+      // Füge deinen Google Maps API-Key hier hinzu
+      return 'AIzaSyC6JdfAa9WBygCNy0EfzbYfNu5hP5x-oUo';
+    },
+  },
 });
 </script>
 <template>
@@ -79,6 +85,7 @@ export default defineComponent({
         <!-- Anfahrtsbeschreibung und Kontaktinformationen -->
         <div>
           <h3>Anfahrt zum Hotel</h3>
+
           <p>
             Unser Hotel befindet sich in der Innenstadt von Wien, in der Nähe
             des Hauptbahnhofs. Hier ist die Anfahrtsbeschreibung zum Hotel:
@@ -98,6 +105,15 @@ export default defineComponent({
           <h3>Kontakt</h3>
           <p>Telefon: +123456789</p>
           <p>Email: kontakt@hotel.com</p>
+        </div>
+
+        <div style="position: relative; width: 100%; height: 300px;">
+          <iframe
+              :src="'https://www.google.com/maps/embed/v1/place?q=Hauptbahnhof,+Wien&key=' + $googleMapsApiKey"
+              frameborder="0"
+              style="border:0; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"
+              allowfullscreen
+          ></iframe>
         </div>
 
         <b-button @click="printPage">Seite drucken</b-button>
