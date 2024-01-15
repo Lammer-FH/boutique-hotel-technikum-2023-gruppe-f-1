@@ -1,8 +1,17 @@
 <script>
 import { defineComponent } from 'vue';
+import { useLoginStore } from '@/stores/loginStore';
 
 export default defineComponent({
-  name: "Header"
+  name: "Header",
+  data: () => {
+    return {
+      loginStore: useLoginStore()
+    }
+  },
+  mounted() {
+    console.log('Header mounted. isLoggedIn:', this.loginStore.isLoggedIn);
+  },
 })
 </script>
 
@@ -21,16 +30,13 @@ export default defineComponent({
       <b-navbar-nav class="ms-auto">
         <b-nav-item href="/rooms">Zimmer anzeigen</b-nav-item>
         <b-nav-item-dropdown text="Profil" right>
-          <b-dropdown-item @click="login">Login</b-dropdown-item>
-          <b-dropdown-item href="/register" @click="register">Register now</b-dropdown-item>
-          <b-dropdown-item @click="showProfile">Show Profil</b-dropdown-item>
+          <b-dropdown-item v-if="!loginStore.isLoggedIn" href="/login">Login</b-dropdown-item>
+          <b-dropdown-item v-if="!loginStore.isLoggedIn" href="/register">Register now</b-dropdown-item>
+          <b-dropdown-item v-if="loginStore.isLoggedIn" @click="logout">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
+        <b-nav-item v-if="loginStore.isLoggedIn" class="text-success">Eingeloggt</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
-
-
-
-
 
