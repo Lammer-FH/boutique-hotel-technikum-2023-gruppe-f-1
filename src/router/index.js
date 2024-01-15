@@ -5,7 +5,8 @@ import Impressum from "@/views/Impressum.vue";
 import RoomsPage from '@/views/RoomsPage.vue';
 import BookingForm from "@/views/BookingForm.vue";
 import RegistrationForm from "@/views/RegistrationForm.vue";
-import BookingConfirmation from "@/components/BookingConfirmation.vue";
+import BookingConfirmation from "@/views/BookingConfirmation.vue";
+import LoginForm from "@/views/LoginForm.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,7 +53,12 @@ const router = createRouter({
       path: '/booking-confirmation',
       name: 'BookingConfirmation',
       component: BookingConfirmation
-    }
+    },
+    {
+      path: '/login',
+      name: 'LoginForm',
+      component: LoginForm
+    },
   ]
 })
 
