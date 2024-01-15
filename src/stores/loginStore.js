@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { login as loginService } from '@/api/loginService';
+import axios from "axios";
 
 export const useLoginStore = defineStore('loginStore', {
     state: () => ({
@@ -12,8 +13,6 @@ export const useLoginStore = defineStore('loginStore', {
                 const jwt = await loginService(clientId, secret);
                 this.jwt = jwt;
                 this.isLoggedIn = true;
-                console.log('Logged in. isLoggedIn:', this.isLoggedIn);
-                console.log('Logged in. JWT:', this.jwt);
                 localStorage.setItem('jwt',jwt)
                 localStorage.setItem('isLoggedIn','true')
             } catch (error) {
@@ -28,6 +27,7 @@ export const useLoginStore = defineStore('loginStore', {
             delete axios.defaults.headers.common['Authorization'];
             localStorage.removeItem('jwt')
             localStorage.removeItem('isLoggedIn')
+            window.alert('Logout erfolgreich');
         }
     }
 });

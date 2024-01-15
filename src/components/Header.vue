@@ -12,6 +12,11 @@ export default defineComponent({
   mounted() {
     console.log('Header mounted. isLoggedIn:', this.loginStore.isLoggedIn);
   },
+  methods: {
+    logout(){
+      this.loginStore.logout();
+    }
+  }
 })
 </script>
 
